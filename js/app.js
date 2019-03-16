@@ -2,16 +2,37 @@
  * Create a list that holds all of your cards
  */
 
-var openCards = []
+var openCards = [];
 var cards_value = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-anchor",
            "fa-leaf",  "fa-bicycle",  "fa-diamond",  "fa-bomb", "fa-leaf",
-          "fa-bomb","fa-bolt", "fa-bicycle", "fa-paper-plane-o", "fa-cube"]
+          "fa-bomb","fa-bolt", "fa-bicycle", "fa-paper-plane-o", "fa-cube"];
 
-var moves = 0
-function showCards(card){
-  card.classList.add("open","show")
+var moves = 0;
+//
+function shuffle(array) {
+  /**
+  *@description Shuffle function from http://stackoverflow.com/a/2450976
+  *@param {array}array - contains the array which will be shuffled
+  *@return {array} array - is the shuffled array
+  */
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
 }
 function create_card(value){
+  /**
+  *@description Creates a new card
+  * @param {string} value - Is the value of the created card
+  * @return {object} new_card - return the new created card
+  */
   // Creates a new card
      let new_card = document.createElement("li")
      new_card.classList.add("card")
@@ -57,7 +78,7 @@ function create_card(value){
        else {
 
          if ( !new_card.classList.contains("show") || !new_card.classList.contains("show")){
-           showCards(new_card)
+           new_card.classList.add("open","show")
            openCards.push(new_card)
          }
 
@@ -86,70 +107,4 @@ function start_game(){
  //3.Step: Append the deck to html document
  document.querySelector("#deck_div").appendChild(deck)
 }
-start_game()
-// let allCards = document.querySelectorAll(".card");
-// let openCards = [];
-//
-
-//
-// allCards.forEach(function(card){
-//   card.addEventListener("click",function(event){
-//     if (openCards.length>=2){
-//       //Check if open cards are a match
-//       if (openCards[0].children[0].classList[1] == openCards[1].children[0].classList[1]){
-//         openCards = []
-//       }
-//       setTimeout(function(){
-//         openCards.forEach(function(cards_open){
-//           cards_open.classList.remove("open","show")
-//           openCards = []
-//         },1000)
-//       })
-//
-//     }
-//     else {
-//
-//       if ( !card.classList.contains("show") || !card.classList.contains("show")){
-//         showCards(card)
-//         openCards.push(card)
-//       }
-//
-//     }
-//   })
-// })
-
-
-
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
-// Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-}
-
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
+start_game();
