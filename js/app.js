@@ -3,9 +3,9 @@
  */
 
 let openCards = [];
-let cards_value = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-anchor",
-           "fa-leaf",  "fa-bicycle",  "fa-diamond",  "fa-bomb", "fa-leaf",
-          "fa-bomb","fa-bolt", "fa-bicycle", "fa-paper-plane-o", "fa-cube"];
+let cards_value = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube",
+           "fa-leaf",  "fa-bicycle",  "fa-bomb"];
+cards_value = cards_value.concat(cards_value)
 
 let moves = 0;
 // var for timer
@@ -166,8 +166,11 @@ function start_game(){
   * @return {object} new_card - return the new created card
   */
   //1.Step: Create a new deck
-  //1.1.Step: Reset total amounts of Moves
-  document.querySelector(".moves").innerText=0
+  //1.1.Step: Reset total amounts of moves,stars and time
+  document.querySelector(".moves").innerText=0;
+  for (let j=1;j<4;j++){
+    document.querySelector(`#star_${j}`).children[0].classList= ["fa fa-star"];
+  }
   sec = 0;min = 0,hour = 0;hour_end = "00";min_end = "00"; sec_end = "00"
   document.querySelector("#time").innerText=`${hour_end}:${min_end}:${sec_end}`
   //1.2.Step: Empty innerHTML of deck_div
