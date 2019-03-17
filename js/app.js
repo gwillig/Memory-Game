@@ -84,7 +84,7 @@ function shuffle(array) {
   *@param {array}array - contains the array which will be shuffled
   *@return {array} array - is the shuffled array
   */
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -160,29 +160,34 @@ function create_card(value){
      return new_card
    }
 function start_game(){
-      //Ini the game
-     //1.Step: Create a new deck
-     //1.1.Step: Reset total amounts of Moves
-         document.querySelector(".moves").innerText=0
-         sec = 0
-         //1.2.Step: Empty innerHTML of deck_div
-         let deck_div = document.querySelector("#deck_div")
-         deck_div.innerHTML = ""
-         //1.3.Step: Create new deck
-         let deck = document.createElement("ul")
-         deck.classList.add("deck")
-         //2.Step: Create a new card for each element of cards_value
-         //2.1.Step: shuffle cards_value cards
-         cards_value = shuffle(cards_value)
-         for (let value in cards_value){
-           let new_card = create_card(cards_value[value])
-           deck.appendChild(new_card)
-         }
-         //3.Step: Append the deck to html document
-         document.querySelector("#deck_div").appendChild(deck)
-        }
-        //4.Step: Init. timer
-        timer()
+  /**
+  *@description Creates a new card
+  * @param {string} value - Is the value of the created card
+  * @return {object} new_card - return the new created card
+  */
+  //1.Step: Create a new deck
+  //1.1.Step: Reset total amounts of Moves
+  document.querySelector(".moves").innerText=0
+  sec = 0;min = 0,hour = 0;hour_end = "00";min_end = "00"; sec_end = "00"
+  document.querySelector("#time").innerText=`${hour_end}:${min_end}:${sec_end}`
+  //1.2.Step: Empty innerHTML of deck_div
+  let deck_div = document.querySelector("#deck_div")
+  deck_div.innerHTML = ""
+  //1.3.Step: Create new deck
+  let deck = document.createElement("ul")
+  deck.classList.add("deck")
+  //2.Step: Create a new card for each element of cards_value
+  //2.1.Step: shuffle cards_value cards
+  cards_value = shuffle(cards_value)
+  for (let value in cards_value){
+    let new_card = create_card(cards_value[value])
+    deck.appendChild(new_card)
+  }
+  //3.Step: Append the deck to html document
+  document.querySelector("#deck_div").appendChild(deck)
+  }
+  //4.Step: Init. timer
+  timer()
 
 
 start_game();
