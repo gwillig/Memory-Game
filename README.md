@@ -5,6 +5,7 @@ Focus of the project was to exercise DOM manipulation.
 * HTML
 * CSS
 * JS
+
 ##How to Play
 Click the card to find a match. The goal is to match all 16 cards as fast as possible.
 
