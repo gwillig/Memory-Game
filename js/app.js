@@ -2,12 +2,81 @@
  * Create a list that holds all of your cards
  */
 
-var openCards = [];
-var cards_value = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-anchor",
+let openCards = [];
+let cards_value = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-anchor",
            "fa-leaf",  "fa-bicycle",  "fa-diamond",  "fa-bomb", "fa-leaf",
           "fa-bomb","fa-bolt", "fa-bicycle", "fa-paper-plane-o", "fa-cube"];
 
-var moves = 0;
+let moves = 0;
+// var for timer
+let sec = 0;let min = 0;let hour = 0;
+let sec_end;let min_end;let hour_end;
+let stars = 3;
+
+function rate_performance(){
+    /**
+     * @description update then number of stars based on the number of
+     */
+    let current_moves = document.querySelector(".moves").innerText
+
+    if(current_moves==16){
+        document.querySelector(`#star_1`).children[0].classList= ["fa fa-star-o"];
+        stars = 2
+    }
+    else if (current_moves==20){
+        document.querySelector(`#star_2`).children[0].classList= ["fa fa-star-o"];
+        stars = 1
+    }
+    else if (current_moves==25){
+        document.querySelector(`#star_3`).children[0].classList= ["fa fa-star-o"];
+        stars = 0
+    }
+}
+function timer_func(){
+    /**
+     * @description Create the timer function. At the end it calls the timer function
+    */
+
+    //1.Step: start timer
+    sec++
+    if (sec >= 60) {
+        sec = 0;
+        min++;
+        if (min >= 60) {
+            min = 0;
+            hour++;
+        }
+    }
+    //2.Step: Format the variables
+    if(sec<10){
+        sec_end =`0${sec}`
+    }
+    else{
+        sec_end = sec
+    }
+    if(min<10){
+        min_end =`0${min}`
+    }
+        else{
+        min_end = min
+    }
+    if(hour<10){
+        hour_end =`0${hour}`
+    }
+        else{
+        hour_end = hour
+    }
+    document.querySelector("#time").innerText=`${hour_end}:${min_end}:${sec_end}`
+    timer()
+
+}
+
+function timer(){
+  /**
+  *@description a recursive function which call timer_func to updated the time every second
+  */
+    setTimeout(timer_func,1000)
+}
 //
 function shuffle(array) {
   /**
@@ -52,11 +121,15 @@ function create_card(value){
            break;
          }
        }
+       rate_performance()
        if ( all_card_open == true)
        {
-         alert(`You win. Numberof moves: ${moves}`)
+         $("#modul_won").modal()
+         document.querySelector("#modul_moves").innerText  = moves;
+         document.querySelector("#modul_time").innerText  = `${hour_end}:${min_end}:${sec_end}`;
+         document.querySelector("#modul_stars").innerText  = stars;
        }
-       else{
+       else if (openCards.length==2){
          moves +=1
          document.querySelector(".moves").innerText=moves
 
@@ -87,24 +160,31 @@ function create_card(value){
      return new_card
    }
 function start_game(){
-  //Ini the game
- //1.Step: Create a new deck
- //1.1.Step: Reset total amounts of Moves
- document.querySelector(".moves").innerText=moves
- //1.2.Step: Empty innerHTML of deck_div
- let deck_div = document.querySelector("#deck_div")
- deck_div.innerHTML = ""
- //1.3.Step: Create new deck
- let deck = document.createElement("ul")
- deck.classList.add("deck")
- //2.Step: Create a new card for each element of cards_value
- //2.1.Step: shuffle cards_value cards
- cards_value = shuffle(cards_value)
- for (let value in cards_value){
-   let new_card = create_card(cards_value[value])
-   deck.appendChild(new_card)
- }
- //3.Step: Append the deck to html document
- document.querySelector("#deck_div").appendChild(deck)
-}
+      //Ini the game
+     //1.Step: Create a new deck
+     //1.1.Step: Reset total amounts of Moves
+         document.querySelector(".moves").innerText=0
+         sec = 0
+         //1.2.Step: Empty innerHTML of deck_div
+         let deck_div = document.querySelector("#deck_div")
+         deck_div.innerHTML = ""
+         //1.3.Step: Create new deck
+         let deck = document.createElement("ul")
+         deck.classList.add("deck")
+         //2.Step: Create a new card for each element of cards_value
+         //2.1.Step: shuffle cards_value cards
+         cards_value = shuffle(cards_value)
+         for (let value in cards_value){
+           let new_card = create_card(cards_value[value])
+           deck.appendChild(new_card)
+         }
+         //3.Step: Append the deck to html document
+         document.querySelector("#deck_div").appendChild(deck)
+        }
+        //4.Step: Init. timer
+        timer()
+
+
 start_game();
+
+

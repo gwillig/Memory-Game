@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
@@ -17,21 +18,47 @@
 
         <section class="score-panel">
         	<ul class="stars">
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
+        		<li id="star_1"><i class="fa fa-star"></i></li>
+        		<li id="star_2"><i class="fa fa-star"></i></li>
+        		<li id="star_3"><i class="fa fa-star"></i></li>
         	</ul>
-
-        	<span class="moves">3</span> Moves
-
+        	<span class="moves">3</span> Moves &nbsp&nbsp&nbsp;
+            <span id="time">00:00:00</span>
             <div class="restart">
         		<i class="fa fa-repeat" onclick="start_game()"></i>
         	</div>
         </section>
         <div id="deck_div"></div>
-
+        <!-- Modal. Inspired by https://getbootstrap.com/docs/4.0/components/modal/ -->
+        <div class="modal fade" id="modul_won" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Yeah, you won.
+                <ul>
+                    <li>Total number of moves&nbsp<span id="modul_moves"></span></li>
+                    <li>Time&nbsp<span id="modul_time"></span></li>
+                    <li>Stars&nbsp<span id="modul_stars"></span></li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="start_game()">Play again</button>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
-
+    <script src="js/jquery-3.2.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/app.js"></script>
+
 </body>
 </html>
