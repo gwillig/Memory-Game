@@ -29,8 +29,8 @@ The game board consists of sixteen "cards" arranged in a grid. The deck is made 
 Click for live version: http://htmlpreview.github.io/?https://github.com/gwillig/Memory-Game/blob/master/index.html &nbsp;&nbsp;
 The game ends once all cards have been correctly matched. The player could restart the game at any time by clicking on the restart icon.
 
+# License
+The MIT License (MIT)
 
-Please feel free to copy or clone the project.
-
-###### Code by Gustav Willig
+Copyright (c) 2019 Gustav Willig
 
