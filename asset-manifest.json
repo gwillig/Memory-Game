@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/gwillig/Memory-Game/static/css/main.584f321a.chunk.css",
+    "main.js": "/gwillig/Memory-Game/static/js/main.a75b1002.chunk.js",
+    "main.js.map": "/gwillig/Memory-Game/static/js/main.a75b1002.chunk.js.map",
+    "runtime~main.js": "/gwillig/Memory-Game/static/js/runtime~main.3de81cbe.js",
+    "runtime~main.js.map": "/gwillig/Memory-Game/static/js/runtime~main.3de81cbe.js.map",
+    "static/js/2.b41502e9.chunk.js": "/gwillig/Memory-Game/static/js/2.b41502e9.chunk.js",
+    "static/js/2.b41502e9.chunk.js.map": "/gwillig/Memory-Game/static/js/2.b41502e9.chunk.js.map",
+    "index.html": "/gwillig/Memory-Game/index.html",
+    "precache-manifest.cad452713a9f5f0039edc6caecbd2833.js": "/gwillig/Memory-Game/precache-manifest.cad452713a9f5f0039edc6caecbd2833.js",
+    "service-worker.js": "/gwillig/Memory-Game/service-worker.js",
+    "static/css/main.584f321a.chunk.css.map": "/gwillig/Memory-Game/static/css/main.584f321a.chunk.css.map",
+    "static/media/logo.svg": "/gwillig/Memory-Game/static/media/logo.5d5d9eef.svg"
+  }
+}
