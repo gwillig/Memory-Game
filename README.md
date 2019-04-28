@@ -2,9 +2,11 @@
 This was the second project for the Front-End nanodegree from udacity ( https://classroom.udacity.com/nanodegrees/nd001).  The goal was to build your own voersion of the classic memory game "Concentration", using plain JavaScript, DOM selectors and Event Listeners.
 Focus of the project was to exercise DOM manipulation.
 ## Used technologies
+* React
 * HTML
 * CSS
 * JS
+
 
 ## How to Play
 1. Clone or download the project
